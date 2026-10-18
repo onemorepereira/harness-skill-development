@@ -2,9 +2,11 @@
 
 This repo contains agent skills — instruction documents read by LLM agents at runtime. The quality bar is different from code: the test is whether an agent following the instructions produces better outcomes, not whether the files parse correctly.
 
+This is a single-maintainer personal project. Contributions are welcome; response time is best-effort.
+
 ## What's worth contributing
 
-- **Bug reports from real sessions** — the most valuable input. If a skill fired wrong, produced a bad artifact, skipped a stage, or missed an obvious problem, that's a concrete finding. Open an issue with the session context.
+- **Bug reports from real sessions** — the most valuable input. If a skill fired wrong, produced a bad artifact, skipped a stage, or missed an obvious problem, that's a concrete finding. Document it in a file under `docs/findings/` with the session date and what went wrong, then open a PR.
 - **Reviewer prompt improvements** — the prompts in `ship-it/references/reviewers/` are the load-bearing pieces. If a reviewer missed something it should have caught, that's a fixable gap.
 - **Specialist Reviewer Injection block additions** — each specialist file has a compact injection block (≤5 questions) appended to reviewer prompts. If a domain-specific red flag is consistently missed, add it here.
 - **New skills** — a new skill directory at the repo root with its own `SKILL.md` and `references/` structure.
@@ -46,8 +48,8 @@ The `description:` frontmatter field controls when the model offers the skill. W
 4. **Test it.** Run a session that would have triggered the original problem and verify the new instructions produce the right behavior. Describe what you tested in the PR.
 
 5. **Commit message convention:** `type(scope): description`
-   - Types: `feat`, `fix`, `refine`, `docs`, `chore`
-   - Scopes: `ship-it`, `reviewers`, `specialists`, `personas`, `templates`, `ldd` (lifecycle-driven-delivery)
+   - Types: `feat`, `fix`, `style`, `docs`, `chore`
+   - Scopes: `ship-it`, `reviewers`, `specialists`, `personas`, `templates`
    - Examples: `fix(reviewers): verify prompt now checks commit message accuracy`, `feat(specialists): add FinOps injection block`
 
 ## Adding a new skill

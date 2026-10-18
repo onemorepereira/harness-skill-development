@@ -1,6 +1,8 @@
 # harness-skill-development
 
-A collection of agent skills for OpenCode and Claude Code. The primary skill is **ship-it** — a full product lifecycle framework with adversarial validation at every stage gate.
+Agent skills for OpenCode and Claude Code, developed and maintained by [@mpereira](https://github.com/mpereira). The primary skill is **ship-it** — a full product lifecycle framework with adversarial validation at every stage gate.
+
+> **Status:** active single-maintainer project. Contributions welcome; response time is best-effort.
 
 ## What's here
 
@@ -27,7 +29,7 @@ ship-it/                        ← Active skill (use this)
         ├── experience.md
         └── ai-ml.md
 
-lifecycle-driven-delivery/      ← Predecessor skill (superseded by ship-it)
+lifecycle-driven-delivery/      ← Predecessor skill, kept for reference — do not edit
 docs/superpowers/plans/         ← Implementation plans used during development
 ```
 
@@ -86,12 +88,12 @@ use @ship-it throughout
 
 ## The predecessor skills
 
-`ship-it` supersedes two earlier skills:
+`ship-it` was designed by combining two earlier skills from the [superpowers](https://github.com/superpowers) skill tree:
 
 - **`design-to-execution`** — a four-stage adversarial pipeline (Design → Spec → Plan → Execute). Strong validation mechanism, no lifecycle awareness, no specialist coverage, ends at code review.
 - **`lifecycle-driven-delivery`** — an eight-stage lifecycle framework with deep specialist files. No adversarial gates; self-assessed checklists only.
 
-`ship-it` combines the adversarial gate mechanism from `design-to-execution` with the lifecycle breadth and specialist depth from `lifecycle-driven-delivery`. `lifecycle-driven-delivery` is kept in this repo as a reference; it is not actively maintained.
+`ship-it` combines the adversarial gate mechanism from `design-to-execution` with the lifecycle breadth and specialist depth from `lifecycle-driven-delivery`. A copy of `lifecycle-driven-delivery` is kept in this repo as the design reference; it is not actively maintained here.
 
 ## Contributing
 
