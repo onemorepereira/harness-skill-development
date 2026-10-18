@@ -1,0 +1,15 @@
+# harness-skill-development git conventions
+# See CONTRIBUTING.md for contribution guidelines
+
+# Agent workspace scratch directories
+.superpowers/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
