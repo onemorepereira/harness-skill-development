@@ -32,7 +32,7 @@ Skip on Patch. From repo signals, infer Introduction, Growth, Maturity, or Decli
 
 **The revert test:** if reverting the commits fully restores the previous behavior and data, it is not Full — even when it changes behavior callers see (status codes, error bodies, validation). New tables, nullable columns, and endpoints are Standard. Full is for what a revert can't undo.
 
-Evolve (improving something shipped) re-enters at Define. Sunset (removing something) runs alongside Define: write the dependent inventory during Define and gate both together; the removal steps then go through Build, Verify, and Launch. State the track and why in one line. When unsure, take the bigger track for the *thinking* and the smaller one for the *paperwork*.
+Evolve is for a shipped feature whose recorded success signal or metric falls short; it writes an evolution brief, then re-enters at Define. A request to improve existing behavior with no such signal ("make error handling better") is not Evolve: pick the track by the revert test and start at that track's first stage. Sunset (removing something) runs alongside Define: write the dependent inventory during Define and gate both together; the removal steps then go through Build, Verify, and Launch. State the track and why in one line. When unsure, take the bigger track for the *thinking* and the smaller one for the *paperwork*.
 
 ## Step 2: Load the specialists this change needs
 
@@ -88,7 +88,7 @@ Open each file at the moment you need it, never up front. The rows below are sum
 
 Discover has no gate review; Patch has none at all. **Self** review: answer the stage's reviewer prompt questions yourself, explicitly, and state what you found. **Subagent** review: a fresh reviewer gets only the artifact and the prompt — the mechanics are in `references/reviewers/README.md`; read it before the first subagent gate.
 
-**Convergence:** advance when a pass returns no blocking issues; minor findings never block. A finding that recurs after your fix means the fix was wrong — diagnose it before looping again. **At most 3 subagent passes per gate.** If the third still has blockers, stop and bring them to the human with the reviewer's findings and your proposed resolution for each.
+**Convergence:** advance when a pass returns no blocking issues; minor findings never block. A finding that recurs after your fix means the fix was wrong — diagnose it before looping again. **At most 3 subagent passes per gate**; a dispatch that failed or lacked the artifact doesn't count. If the third still has blockers, stop and bring them to the human with the reviewer's findings and your proposed resolution for each.
 
 ### Delegate heavy work
 

@@ -1,6 +1,6 @@
 # Stage 7: Evolve — *Growth PM, Platform Engineer, SRE*
 
-Use this stage when improving something already shipped.
+Use this stage when a shipped feature's recorded success signal or metric falls short. A general request to improve existing behavior, with no signal to measure against, skips Evolve and starts at its track's first stage.
 
 - Write an **evolution brief** (template in `references/templates.md`): current metric vs. original success signal, identified constraint and its evidence, proposed change.
 - The proposed change re-enters the pipeline at Define. Treat it as a new Standard or Full track request depending on scope.
