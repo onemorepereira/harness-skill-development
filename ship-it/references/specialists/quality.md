@@ -13,12 +13,12 @@ The key move is to start in Define, not Verify: an acceptance criterion you can'
 | Stage | Lens |
 |---|---|
 | Define | Is each acceptance criterion automatable? If not, rewrite it until it is, or state how it will be checked manually. |
-| Design | Choose the level for each test (unit, integration, end-to-end), favoring the fastest level that proves the behavior. Plan test data and fixtures. Plan seams for faking external services. |
-| Build | Tests alongside code, matching the repo's test framework and conventions. Deterministic tests: no sleeps, no reliance on order or real clocks. |
+| Design | Choose the level for each test (unit, integration, end-to-end), favoring the fastest level that proves the behavior. Plan test data and fixtures. Fake only the external boundary (network, third-party APIs, clock), never the project's own config, registration, or entry point. |
+| Build | Tests alongside code, matching the repo's test framework and conventions. Deterministic tests: no sleeps, no reliance on order or real clocks. Every new path gets at least one test through its real wiring: the real command or entry point in a fresh process, real config and registration, with only the external boundary faked. |
 | Verify | All acceptance criteria covered by tests that run in CI. Check for flakiness by running new tests several times. |
 | Evolve | Add a regression test for every bug fixed. |
 
-**Red flags:** tests that pass without the feature (they test nothing); sleeps instead of waiting on conditions; end-to-end tests for logic that a unit test could cover; tests coupled to implementation details.
+**Red flags:** tests that pass without the feature (they test nothing); sleeps instead of waiting on conditions; end-to-end tests for logic that a unit test could cover; tests coupled to implementation details; a component registered or configured by hand in a test, so nothing checks that the real code path does it; a fake that skips real parsing or validation.
 
 **Gate evidence:** acceptance-criteria-to-test mapping; tests failing before the change and passing after (for bug fixes).
 
@@ -29,6 +29,7 @@ Append to reviewer prompts when this specialist is active.
 - Does every acceptance criterion map to a test that runs in CI?
 - Do any new tests use sleeps or rely on real clocks (they will be flaky)?
 - Do tests fail before the change and pass after (for bug fixes)?
+- Is every new path exercised at least once through its real entry point, config, and registration, with only the external boundary faked?
 
 ---
 
@@ -38,9 +39,9 @@ Append to reviewer prompts when this specialist is active.
 
 | Stage | Lens |
 |---|---|
-| Verify | Use it like a curious, impatient user: double-submit, back button, refresh mid-flow, paste odd input, two tabs at once, slow connection. Note what surprised you. |
+| Verify | Use it like a curious, impatient user: double-submit, back button, refresh mid-flow, paste odd input, two tabs at once, slow connection. Make the first attempt fail, then try to recover. Note what surprised you. |
 
-**Red flags:** only the happy path was ever exercised by hand.
+**Red flags:** only the happy path was ever exercised by hand; a state with no way forward.
 
 **Gate evidence:** a short list of scenarios tried and their results.
 
