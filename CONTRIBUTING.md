@@ -31,7 +31,10 @@ The `description:` frontmatter field controls when the model offers the skill. W
 
 | File | Role | Edit when |
 |---|---|---|
-| `SKILL.md` | Core instructions: tracks, stages, gates, anti-patterns | Stage behavior needs to change |
+| `SKILL.md` | Index: grounding rule, tracks, stage map, gate depth, delegation, anti-patterns. Loaded every time — keep it small | Track, gate depth, or routing changes |
+| `references/stages/*.md` | Full instructions for one stage, read on entering it | Stage behavior needs to change |
+| `references/delegates/*.md` | Subagent prompts for heavy work, each with a fixed return shape | A delegate returns the wrong shape or misses something |
+| `references/grounding.md` | Authoritative-source rules | Grounding behavior needs to change |
 | `references/personas.md` | Core persona checklists and customer persona table | A persona lens needs updating |
 | `references/templates.md` | Artifact templates (spec.md, design.md, launch.md, etc.) | A template is missing a field or has a wrong default |
 | `references/reviewers/*.md` | Adversarial reviewer prompts, one per stage | A reviewer misses something or asks the wrong questions |
