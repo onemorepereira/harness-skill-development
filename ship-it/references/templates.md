@@ -251,6 +251,8 @@ Evidence: where this comes from — a specific metric, an incident, a pattern in
 - [x] AC1 — <how it was proven: test name, command run, screenshot>
 - [x] AC2 — ...
 
+**Exercised live:** <what was run end to end, where, and what happened — or why no real environment was reachable>
+
 **Security scans:** <per category: tool + version, command, result — or "unscanned (no tool available)"; omit if the security specialist was not active>
 
 **Gate history:** <per gate: review type, number of passes, blockers found and how each was resolved>

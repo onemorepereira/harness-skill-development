@@ -92,7 +92,7 @@ Discover has no gate review; Patch has none at all. **Self** review: answer the 
 
 ### Delegate heavy work
 
-On Standard and Full, hand these to a subagent using the prompt file, and keep only what it returns; with no subagent tool, follow the prompt file yourself. On Patch and Quick, do the work inline without opening the prompt files: check the versions you rely on, run the available scanners, run the full suite.
+On Standard and Full, hand these to a subagent using the prompt file, and keep only what it returns; with no subagent tool, follow the prompt file yourself. On Patch and Quick, do the work inline without opening the prompt files: check the versions you rely on, run the available scanners, run the full suite, and run the change once the way it will actually run.
 
 | Work | When | Prompt |
 |---|---|---|
@@ -136,5 +136,6 @@ On Quick, Standard, and Full, finish by writing `docs/<feature-slug>/handoff.md`
 | Silent drift | The implementation diverges from the spec and nobody is told. |
 | Spec that restates the design | The spec must be independently buildable. If a developer can't build from it without the design, it isn't done. |
 | Skipping or self-substituting the red-team | Same author, same blind spots. Where the table says subagent, another read of your own work does not replace it. |
+| Human as test harness | Tests fake the project's own wiring, so the human finds the bugs by trying the real thing, one round trip at a time. Run the real path yourself before handing anything over. |
 | Building from memory | Recalled APIs, flags, defaults, and limits are often for a different version. Check the source and cite it. |
 | Working from the index | Following a stage from its one-line summary here instead of reading its file. |

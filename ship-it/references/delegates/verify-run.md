@@ -10,19 +10,21 @@ You are running the checks that prove a change works. You report evidence; you d
 **Acceptance criteria and their proving tests or commands:**
 1. [AC text] — [test name or command]
 2. ...
-**Edge cases to probe:** [list, or "standard set": empty and huge inputs, unicode, missing permissions, dependency failure, re-run]
+**Edge cases to probe:** [list, or "standard set": empty and huge inputs, unicode, missing permissions, dependency failure, failure then retry, re-run]
+**Live run:** [the command that runs the change as it will actually run, and where — or "none reachable"]
 
-Find how this repo runs its full test suite, lint, and type checks (CI config, Makefile, package scripts) and run all of them, not only the new tests. Then run each AC's proving test or command, then the edge cases.
+Find how this repo runs its full test suite, lint, and type checks (CI config, Makefile, package scripts) and run all of them, not only the new tests. Then run each AC's proving test or command, then the edge cases, then the live run.
 
 Return exactly this, and nothing else:
 
 **Suite:** command → passed / failed counts. **Lint:** command → result. **Types:** command → result.
 **Acceptance criteria:**
 
-| # | AC | Command or test | Result | Evidence |
-|---|---|---|---|---|
+| # | AC | Command or test | What it fakes | Result | Evidence |
+|---|---|---|---|---|---|
 
 **Edge cases:** one line each — input, observed behavior, pass / fail.
+**Live run:** command and environment → observed result.
 **Failures verbatim:** the failing test names and the first error lines of each, unedited.
 
 A check you could not run is reported as `not run` with the reason — never as passed.
