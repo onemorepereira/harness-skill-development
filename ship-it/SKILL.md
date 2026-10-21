@@ -13,6 +13,31 @@ Most weak agent output comes from two separate failures: skipped stages (code wr
 
 **Scale** matters. A three-page spec for a typo fix is its own failure. The track system sizes the process to the work: Patch gets no process; Full gets all of it.
 
+**Grounding** is mandatory on every track. Training knowledge is a hypothesis, not evidence: versions, APIs, defaults, limits, and advisories drift. See *Grounding* below.
+
+---
+
+## Grounding: verify against authoritative sources
+
+Before a claim about anything outside your own reasoning shapes a spec, design, plan, fix, or diagnosis, check it against an authoritative source. Applies on every track, including Patch.
+
+| Claim about… | Authoritative source |
+|---|---|
+| This codebase | The code, tests, config, lockfiles, CI, git history — read them |
+| A library, framework, language, or tool | Official docs for the version actually pinned or installed; its changelog and release notes; `--help` / `man` of the installed binary |
+| A cloud service, API, or SaaS | The provider's official docs and API reference |
+| Known bugs, behavior changes, workarounds | The project's issue tracker, release notes, migration guides |
+| Vulnerabilities | Vendor advisories, GHSA, OSV, NVD |
+| Standards and regulations | The standard or regulation text |
+
+Blog posts, forum answers, and model recall are leads to a source, not sources.
+
+**Record it.** Every ADR carries a `Sources` line (link + version or access date). Diagnoses in Verify and Evolve cite the doc, changelog, or issue that confirms them.
+
+**When no source is reachable** (no network, no docs tool, undocumented behavior): say so, and record the claim as an assumption with an owner and a default — the same treatment as an unvalidated Discover assumption. Then prove it empirically (a spike, a test, running the command) before relying on it.
+
+**When something doesn't behave as expected:** check the docs, changelog, and open issues for the installed version before changing code. Version mismatch is the first hypothesis, not the last.
+
 ---
 
 ## Step 0: Infer the product stage
@@ -259,6 +284,7 @@ Finish with a brief report:
 | Designing in a vacuum | A clean architecture that ignores how the existing system works. |
 | Gold-plating | Building beyond the acceptance criteria. Note ideas as follow-ups. |
 | Unverified done | Claiming success without running the code or the tests. |
+| Building from memory | Recalled APIs, flags, defaults, and limits are often for a different version. Check the authoritative source and cite it. |
 | Silent drift | The implementation diverges from the spec and nobody is told. |
 | Skipping the red-team | The red-team finds what you cannot see. It costs one subagent call. |
 | Spec that restates the design | The spec must be independently buildable. If a developer can't build from it without the design, it isn't done. |

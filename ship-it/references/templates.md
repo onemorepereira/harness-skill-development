@@ -87,6 +87,7 @@ Note which existing patterns this follows.>
 - **Decision:** <chosen option>
 - **Why:** <reasoning, trade-offs accepted>
 - **Reversibility:** easy | costly | one-way
+- **Sources:** <authoritative docs, changelogs, or issues this decision relies on — link + version or access date; or "Unverified — see assumption N">
 
 ## Failure modes
 | Failure | Detection | Behavior | Recovery |
