@@ -251,6 +251,10 @@ Evidence: where this comes from — a specific metric, an incident, a pattern in
 - [x] AC1 — <how it was proven: test name, command run, screenshot>
 - [x] AC2 — ...
 
+**Security scans:** <per category: tool + version, command, result — or "unscanned (no tool available)"; omit if the security specialist was not active>
+
+**Gate history:** <per gate: review type, number of passes, blockers found and how each was resolved>
+
 **Specialists consulted:** <e.g., Data Engineer, AppSec — with their gate evidence, or a note on what was skimmed>
 
 **Decisions and deviations:** <changes from the design, and why>

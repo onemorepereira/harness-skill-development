@@ -19,7 +19,7 @@ Training knowledge is a hypothesis, not evidence. Before a claim about a library
 
 ## Step 0: Infer the product stage
 
-From repo signals, infer Introduction, Growth, Maturity, or Decline; **read `references/product-stages.md`** for what each optimizes for. State it in one line: *"Reading this as a [stage]-stage product ([key signals]). Correct me if that's wrong — it changes what I optimize for."* Confirm with the user if the track is Full or the stage is Decline.
+Skip on Patch. From repo signals, infer Introduction, Growth, Maturity, or Decline; **read `references/product-stages.md`** for what each optimizes for. State it in one line: *"Reading this as a [stage]-stage product ([key signals]). Correct me if that's wrong — it changes what I optimize for."* Confirm with the user if the track is Full or the stage is Decline.
 
 ## Step 1: Pick a track
 
@@ -28,9 +28,11 @@ From repo signals, infer Introduction, Growth, Maturity, or Decline; **read `ref
 | **Patch** | One-liner fix, no design needed | None — state the change and do it |
 | **Quick** | Small, well-understood change in a clear area | Define-lite → Build → Verify |
 | **Standard** | A new feature or meaningful change in an existing product | Discover → Define → Design → Build → Verify → Launch |
-| **Full** | New product or service; cross-cutting change; anything hard to reverse (schema, public API, auth, billing, data deletion); migration | All that apply, with human sign-off after Define and Design |
+| **Full** | New product or service; cross-cutting change; anything hard to reverse: changing or removing existing schema or public API, auth model, billing, data deletion; migration | All that apply, with human sign-off after Define and Design |
 
-Evolve (improving something shipped) and Sunset (removing something) run on whichever track needs them. State the track and why in one line. When unsure, take the bigger track for the *thinking* and the smaller one for the *paperwork*.
+**Additive vs. hard to reverse:** a new table, a new nullable column, or new endpoints that leave existing contracts unchanged is Standard. Altering or removing anything existing callers or data depend on is Full.
+
+Evolve (improving something shipped) re-enters at Define. Sunset (removing something) runs alongside Define: write the dependent inventory during Define and gate both together; the removal steps then go through Build, Verify, and Launch. State the track and why in one line. When unsure, take the bigger track for the *thinking* and the smaller one for the *paperwork*.
 
 ## Step 2: Load the specialists this change needs
 
@@ -52,7 +54,15 @@ State which specialists you loaded in one line so the human can add or remove on
 
 ## Step 3: Move through the stages
 
-**Read the stage's file before starting the stage.** The row below is a summary, not the instructions. Persona checklists: `references/personas.md`. Artifact templates: `references/templates.md`.
+Open each file at the moment you need it, never up front. The rows below are summaries, not the instructions.
+
+| Track | Read |
+|---|---|
+| Patch | Nothing beyond this file |
+| Quick | The stage file on entering each stage; that stage's reviewer prompt at its self-review gate; `references/templates.md` when writing `spec.md`. Not `delegates/` or `reviewers/README.md` |
+| Standard, Full | The stage file on entering each stage; `references/reviewers/README.md` before the first subagent gate; a delegate prompt only when about to dispatch it; templates and personas when writing the artifact that uses them |
+
+**Artifacts live in `docs/<feature-slug>/`** in the repo: `spec.md`, `design.md`, `launch.md`, `dependent-inventory.md`, `handoff.md` — whichever the track produces.
 
 | Stage | Lens | Produces | Gate in one line | Read |
 |---|---|---|---|---|
@@ -78,7 +88,7 @@ State which specialists you loaded in one line so the human can add or remove on
 
 Discover has no gate review; Patch has none at all. **Subagent** and **self** review are defined in `references/reviewers/README.md` — read it before the first gate.
 
-**Convergence:** advance when no blocking issues remain. Minor findings never block; two consecutive passes with only minor or advisory findings is convergence. A finding that recurs after your fix means the fix was wrong — diagnose it before looping again.
+**Convergence:** advance when a pass returns no blocking issues; minor findings never block. A finding that recurs after your fix means the fix was wrong — diagnose it before looping again. **At most 3 subagent passes per gate.** If the third still has blockers, stop and bring them to the human with the reviewer's findings and your proposed resolution for each.
 
 ### Delegate heavy work
 
@@ -91,7 +101,7 @@ On Standard and Full, hand these to a subagent using the prompt file, and keep o
 | Security scan | Security specialist active; Build and Verify | `references/delegates/security-scan.md` |
 | Verify run | Verify | `references/delegates/verify-run.md` |
 
-Delegates gather and run; they don't decide. Gate verdicts and claims of done stay with you, based on the evidence they return.
+Budget: one evidence sweep per request; one source-lookup batch per stage (check later stragglers inline); one verify run and one security scan per Verify pass. Delegates gather and run; they don't decide. Gate verdicts and claims of done stay with you, based on the evidence they return.
 
 ---
 
@@ -104,6 +114,7 @@ Stop and ask the human at these points only:
 | Track or product stage ambiguous | State inference; ask to confirm or correct |
 | After Define gate (Full track) | Questions only they can resolve: scope, trade-offs, open questions from Discover |
 | After Design gate (Full track) | Same; plus any irreversible architectural decision |
+| A gate still has blockers after 3 subagent passes | The blockers, the reviewer's reasoning, and your proposed resolution for each |
 | Before any irreversible action (any track) | Explicit confirmation regardless of track |
 | After execution | Final summary: what shipped, rulings made, deferred minors |
 
@@ -111,7 +122,7 @@ Do not stop between stages for progress updates. Do not ask "should I continue?"
 
 ## Handoff
 
-Finish with the handoff report in `references/templates.md`.
+On Quick, Standard, and Full, finish by writing `docs/<feature-slug>/handoff.md` from the template in `references/templates.md` and summarizing it in chat. On Patch, a one- or two-line summary in chat is the handoff.
 
 ---
 

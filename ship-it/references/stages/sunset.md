@@ -1,6 +1,6 @@
 # Stage 8: Sunset — *Portfolio PM, Support, Compliance*
 
-For deprecating or removing something:
+For deprecating or removing something. The dependent inventory is written and gated during Define (see `references/stages/define.md`); the removal steps below then run through Build, Verify, and Launch.
 
 - Write a **dependent inventory and removal plan** (template in `references/templates.md`): every dependent (code paths, APIs, jobs, docs, users, data), migration paths, removal sequence, retention obligations.
 - Deprecate in steps: warn → disable behind flag → remove. Each step is reversible until the last.
