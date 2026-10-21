@@ -40,9 +40,11 @@ Use security scanners whenever they are available. Your own reading of the diff 
 | IaC and config | Terraform, Kubernetes, Helm, CloudFormation, Dockerfiles | `checkov`, `trivy config`, `tfsec`, `kube-linter` |
 | Container images | Base image or image contents changed | `trivy image`, `grype` |
 
+On Standard and Full, run the scan through `references/delegates/security-scan.md`.
+
 **Rules:**
 - Don't install a scanner or change CI without the user's approval. If you install one, pin its version.
-- Confirm a tool's flags and config against its docs for the installed version (see *Grounding* in `SKILL.md`) — don't run a scanner with remembered flags.
+- Confirm a tool's flags and config against its docs for the installed version (see `references/grounding.md`) — don't run a scanner with remembered flags.
 - Triage every finding: fix it, or accept it with a written reason. A finding isn't a false positive until you've read the flagged code.
 - If no tool exists for a category the change touches, record it as unscanned in the gate evidence and compensate with a targeted manual review of that category. Never report a category as clean that wasn't scanned.
 

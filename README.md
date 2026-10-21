@@ -8,11 +8,22 @@ Agent skills for OpenCode and Claude Code, developed and maintained by [@mpereir
 
 ```
 ship-it/                        ← Active skill (use this)
-├── SKILL.md                    ← Core skill: tracks, stages, gates, anti-patterns
+├── SKILL.md                    ← Index: grounding, tracks, stage map, gate depth, delegation, anti-patterns
 └── references/
+    ├── grounding.md            ← Authoritative-source rules (applies on every track)
+    ├── product-stages.md       ← What each product stage optimizes for
     ├── personas.md             ← Core persona checklists and customer persona table
-    ├── templates.md            ← Artifact templates (spec, design, launch, etc.)
+    ├── templates.md            ← Artifact templates (spec, design, launch, handoff, etc.)
+    ├── stages/                 ← Full instructions per stage, read on entering it
+    │   ├── discover.md  define.md  design.md  build.md
+    │   └── verify.md  launch.md  evolve.md  sunset.md
+    ├── delegates/              ← Subagent prompts with fixed return shapes
+    │   ├── evidence-sweep.md
+    │   ├── source-lookup.md
+    │   ├── security-scan.md
+    │   └── verify-run.md
     ├── reviewers/              ← Stage-specific adversarial reviewer prompts
+    │   ├── README.md           ← How to run a subagent or self review
     │   ├── define.md
     │   ├── design.md
     │   ├── plan.md

@@ -1,6 +1,6 @@
 # Quality Specialists
 
-Load for every Standard and Full track. The QA Engineer in SKILL.md owns the Verify stage; these specialists sharpen it and pull quality work earlier.
+Load for every Standard and Full track. The QA Engineer in `stages/verify.md` owns the Verify stage; these specialists sharpen it and pull quality work earlier.
 
 ---
 

@@ -2,7 +2,7 @@
 
 Each persona is a set of questions and a list of failures it is good at catching. Apply them silently: the user should see better decisions, not role-play. Use the ones the current stage calls for; skip any that don't apply to the work.
 
-These are the **core personas**, one or more per stage, who own that stage's decisions. **Specialists** (data engineer, SRE, compliance officer, QA automation, beta tester, and others) live in `specialists/` and are pulled in by what the change touches; see Step 2 in SKILL.md. Where a core persona here overlaps a specialist (for example, the Security & Privacy Reviewer and `specialists/security.md`), this file is the quick check and the specialist file is the deep one.
+These are the **core personas**, one or more per stage, who own that stage's decisions. **Specialists** (data engineer, SRE, compliance officer, QA automation, beta tester, and others) live in `specialists/` and are pulled in by what the change touches; see Step 2 in `SKILL.md`. Where a core persona here overlaps a specialist (for example, the Security & Privacy Reviewer and `specialists/security.md`), this file is the quick check and the specialist file is the deep one.
 
 ## Contents
 
