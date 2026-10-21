@@ -28,9 +28,9 @@ Skip on Patch. From repo signals, infer Introduction, Growth, Maturity, or Decli
 | **Patch** | One-liner fix, no design needed | None — state the change and do it |
 | **Quick** | Small, well-understood change in a clear area | Define-lite → Build → Verify |
 | **Standard** | A new feature or meaningful change in an existing product | Discover → Define → Design → Build → Verify → Launch |
-| **Full** | New product or service; cross-cutting change; anything hard to reverse: changing or removing existing schema or public API, auth model, billing, data deletion; migration | All that apply, with human sign-off after Define and Design |
+| **Full** | New product or service; cross-cutting change; anything a code revert can't undo: data migration or deletion, removing a schema element, endpoint, or field clients may rely on, auth model, billing | All that apply, with human sign-off after Define and Design |
 
-**Additive vs. hard to reverse:** a new table, a new nullable column, or new endpoints that leave existing contracts unchanged is Standard. Altering or removing anything existing callers or data depend on is Full.
+**The revert test:** if reverting the commits fully restores the previous behavior and data, it is not Full — even when it changes behavior callers see (status codes, error bodies, validation). New tables, nullable columns, and endpoints are Standard. Full is for what a revert can't undo.
 
 Evolve (improving something shipped) re-enters at Define. Sunset (removing something) runs alongside Define: write the dependent inventory during Define and gate both together; the removal steps then go through Build, Verify, and Launch. State the track and why in one line. When unsure, take the bigger track for the *thinking* and the smaller one for the *paperwork*.
 
@@ -59,7 +59,7 @@ Open each file at the moment you need it, never up front. The rows below are sum
 | Track | Read |
 |---|---|
 | Patch | Nothing beyond this file |
-| Quick | The stage file on entering each stage; that stage's reviewer prompt at its self-review gate; `references/templates.md` when writing `spec.md`. Not `delegates/` or `reviewers/README.md` |
+| Quick | The stage file on entering each stage; that stage's reviewer prompt at its self-review gate; `references/templates.md` when writing `spec.md`. Not `delegates/` or `reviewers/README.md` — everything Quick needs from them is in this file |
 | Standard, Full | The stage file on entering each stage; `references/reviewers/README.md` before the first subagent gate; a delegate prompt only when about to dispatch it; templates and personas when writing the artifact that uses them |
 
 **Artifacts live in `docs/<feature-slug>/`** in the repo: `spec.md`, `design.md`, `launch.md`, `dependent-inventory.md`, `handoff.md` — whichever the track produces.
@@ -86,13 +86,13 @@ Open each file at the moment you need it, never up front. The rows below are sum
 | Launch | — | self | subagent |
 | Evolve, Sunset | subagent | subagent | subagent |
 
-Discover has no gate review; Patch has none at all. **Subagent** and **self** review are defined in `references/reviewers/README.md` — read it before the first gate.
+Discover has no gate review; Patch has none at all. **Self** review: answer the stage's reviewer prompt questions yourself, explicitly, and state what you found. **Subagent** review: a fresh reviewer gets only the artifact and the prompt — the mechanics are in `references/reviewers/README.md`; read it before the first subagent gate.
 
 **Convergence:** advance when a pass returns no blocking issues; minor findings never block. A finding that recurs after your fix means the fix was wrong — diagnose it before looping again. **At most 3 subagent passes per gate.** If the third still has blockers, stop and bring them to the human with the reviewer's findings and your proposed resolution for each.
 
 ### Delegate heavy work
 
-On Standard and Full, hand these to a subagent using the prompt file, and keep only what it returns. On Patch and Quick — or when the harness has no subagent tool — do the same work inline, following the same prompt.
+On Standard and Full, hand these to a subagent using the prompt file, and keep only what it returns; with no subagent tool, follow the prompt file yourself. On Patch and Quick, do the work inline without opening the prompt files: check the versions you rely on, run the available scanners, run the full suite.
 
 | Work | When | Prompt |
 |---|---|---|
