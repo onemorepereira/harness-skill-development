@@ -70,7 +70,8 @@ Short is better. Delete sections that don't apply instead of writing "N/A". Thes
 <A paragraph a reviewer can read in 30 seconds: the approach and why.>
 
 ## Experience
-<Flows and states (empty, loading, error, success, edge). Real copy for key messages.
+<Design review (UI work): the approved wireframe or mockup path, the alternatives shown, and the user's steering; or "proceeding unapproved" with the open points; or the skip line.
+Flows and states (empty, loading, error, success, edge). Real copy for key messages.
 For APIs/CLIs: signatures, defaults, error messages, examples.>
 
 ## Architecture

@@ -48,6 +48,8 @@ docs/superpowers/plans/         ← Implementation plans used during development
 
 `ship-it` takes a request from idea to shipped code through eight stages: **Discover → Define → Design → Build → Verify → Launch → Evolve → Sunset**. Not every stage runs every time — a small UI polish is Quick track (Define → Build → Verify); a new service is Full track (all stages, human checkpoints).
 
+On UI work, a Product Designer specialist shows you wireframes (or a rendered mock for look and feel) to choose from and approve before anything is built, unless it judges the design already settled. Say "skip design review" or "show me wireframes" to overrule it.
+
 What makes it different from a checklist: at each stage gate, a **reviewer subagent** receives only the artifact — no conversation history — and must find it independently understandable. If it needs explanation, it isn't done. This is the minimal-context test.
 
 **Four tracks:**
