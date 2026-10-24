@@ -8,7 +8,7 @@ Turn the problem into a contract you can be held to.
 - Carry forward every unvalidatable assumption from Discover as an explicit entry with an owner and a default.
 - A constraint that comes from an external system (a rate limit, a quota, a supported version) cites its source — see `references/grounding.md`.
 
-**Define-lite (Quick track):** `spec.md` with only Problem, Acceptance criteria, Non-goals, Assumptions and open questions, and a `## Plan` section (Quick has no `design.md`). One screen, not a full spec.
+**Define-lite (Quick track):** `spec.md` with only Problem, Acceptance criteria, Non-goals, Assumptions and open questions, and a `## Plan` section (Quick has no `design.md`). One screen, not a full spec. If the Product Designer is active, run its design review before writing `## Plan`.
 
 **Sunset requests:** write `dependent-inventory.md` in this stage too, and run its gate (`references/reviewers/sunset.md`) together with this one — the inventory decides whether the spec is even safe.
 

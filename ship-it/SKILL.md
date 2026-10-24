@@ -45,7 +45,7 @@ Scan the request, the code you'll touch, and the spec (once written). Load only 
 | Infrastructure, deploy pipelines, CI/CD, config, scaling, reliability, cloud cost | `references/specialists/platform.md` | Infrastructure Engineer, DevOps/Platform Engineer, SRE, FinOps |
 | Any Standard or Full track; performance budgets; onboarding or developer tools | `references/specialists/quality.md` | QA Automation Engineer, Exploratory Tester, Performance Engineer, Beta Tester |
 | Regulated data or frameworks (SOC 2, HIPAA, PCI, GDPR…), audit logs, retention | `references/specialists/compliance.md` | Compliance Officer |
-| UI, mobile, public APIs/SDKs/CLIs, docs, user-facing copy, multiple locales | `references/specialists/experience.md` | Frontend, Mobile, Accessibility, API Designer/DX, Technical Writer, Localization |
+| UI, mobile, public APIs/SDKs/CLIs, docs, user-facing copy, multiple locales | `references/specialists/experience.md` | Product Designer, Frontend, Mobile, Accessibility, API Designer/DX, Technical Writer, Localization |
 | Model calls, prompts, agents, retrieval, embeddings, ML features | `references/specialists/ai-ml.md` | ML/AI Engineer, AI Safety Reviewer |
 
 State which specialists you loaded in one line so the human can add or remove one. Each specialist's `Reviewer Injection` blocks are appended to gate reviews (see `references/reviewers/README.md`).
@@ -115,6 +115,7 @@ Stop and ask the human at these points only:
 | After Define gate (Full track) | Questions only they can resolve: scope, trade-offs, open questions from Discover |
 | After Design gate (Full track) | Same; plus any irreversible architectural decision |
 | A gate still has blockers after 3 subagent passes | The blockers, the reviewer's reasoning, and your proposed resolution for each |
+| Product Designer runs a design review (UI work, any track but Patch), or a gate finding would change a design the user approved, supplied, or steered | Directions to choose from, then the refined design to approve; for a conflicting finding, the finding and your proposed resolution |
 | Before any irreversible action (any track) | Explicit confirmation regardless of track |
 | After execution | Final summary: what shipped, rulings made, deferred minors |
 
