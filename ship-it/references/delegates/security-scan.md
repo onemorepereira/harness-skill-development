@@ -1,6 +1,6 @@
 # Delegate: Security scan (Build / Verify)
 
-Fill the bracketed fields and send everything below the line as the subagent prompt. The scanning rules themselves live in `references/specialists/security.md` → *Security scanning*; paste that section where marked.
+Fill the bracketed fields and send everything below the line as the subagent prompt. The scanning rules themselves live in `references/specialists/security.md` → *Security scanning*; paste that section where marked. Which scanners may be installed without stopping to ask is governed by the allowlist in `references/security-tools.md` (the shared source for both this delegate and the pentest probe).
 
 ---
 

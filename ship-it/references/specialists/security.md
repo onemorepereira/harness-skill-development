@@ -43,7 +43,7 @@ Use security scanners whenever they are available. Your own reading of the diff 
 On Standard and Full, run the scan through `references/delegates/security-scan.md`.
 
 **Rules:**
-- Don't install a scanner or change CI without the user's approval. If you install one, pin its version.
+- Scanners on the allowlist in `references/security-tools.md` install under standing approval — no need to stop and ask each time. A scanner not on the allowlist, or any change to CI, still needs the user's approval. Pin every scanner's version either way (never `latest`), and log installs and removals in `docs/security/test-log.md` when the Offensive Security Engineer's evidence folder is in use. The tool names in the table above are illustrative examples per category; `security-tools.md` is the authority on what may be installed without asking.
 - Confirm a tool's flags and config against its docs for the installed version (see `references/grounding.md`) — don't run a scanner with remembered flags.
 - Triage every finding: fix it, or accept it with a written reason. A finding isn't a false positive until you've read the flagged code.
 - If no tool exists for a category the change touches, record it as unscanned in the gate evidence and compensate with a targeted manual review of that category. Never report a category as clean that wasn't scanned.
@@ -84,7 +84,7 @@ The external tester's view, kept in-house: *"I'm the pentester with a week and a
 - **Tools:** install only from the allowlist in `references/security-tools.md` without asking; anything else, or the heavy tier, needs a one-time OK (see that file). Pin versions; log installs and removals in `test-log.md`.
 - **Scope note:** before probing any target ship-it didn't start itself, write one line — target, tests to run, and anything destructive excluded (bulk writes, load/DoS, account lockout, data deletion) — and wait for the user's OK. Copy every scope note into `test-log.md`.
   - **Self-started** means an instance started in this session, by the agent or one of its delegates, that is local or ephemeral and that nobody else uses. A shared environment (staging, a preview others use, production) is never self-started, even if ship-it deployed to it. The probe delegate may start its own local instance, which counts as self-started.
-- **Destructive tests** are never run against a target ship-it didn't start, even with a scope note, unless the user explicitly names them. An active DAST scan (ZAP active scan, Nuclei, sqlmap, Nikto) and the entire heavy tier count as destructive; passive scanning does not. The heavy tier needs a scope note even against a self-started target. The Sunset removal check against a shared environment needs a scope note too (one line, read-only).
+- **Destructive tests** are never run against a target ship-it didn't start, even with a scope note, unless the user explicitly names them. An active DAST scan (ZAP active scan, Nuclei, sqlmap, Nikto), ffuf/Gobuster brute force, Masscan, and the entire heavy tier used actively count as destructive; passive scanning does not. The heavy tier used *actively* needs a scope note even against a self-started target (read-only heavy-tier use, for example CloudFox enumerating an account we own, follows the ordinary self-started rule). The Sunset removal check against a shared environment needs a scope note too (one line, read-only).
 
 ### Evidence folder: `docs/security/`
 
