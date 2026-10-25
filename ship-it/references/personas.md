@@ -53,6 +53,7 @@ Owns trust.
 - What sensitive data is touched, logged, stored, or sent elsewhere?
 - What happens with injection, replay, oversized input, or a malicious user?
 - **Catches:** missing authorization checks, secrets in logs, injection, over-collection of data.
+- This core reviewer is the quick trust check. When the domain is triggered, the deep specialists in `specialists/security.md` carry it: AppSec (make the code right) and Offensive Security (prove it wrong, keep the evidence trail).
 
 ### Senior Engineer — Build
 Owns the code.
@@ -138,9 +139,9 @@ Core personas own the stage. The specialist column shows where specialists most 
 |---|---|---|
 | Discover | Product Manager, UX Researcher | Compliance Officer (which rules apply), Beta Tester (existing feedback) |
 | Define | Product Manager | QA Automation (testable criteria), Compliance Officer (controls as requirements), Performance Engineer (budgets), Analytics Engineer (metrics), SRE (SLOs) |
-| Design | UX Designer, Software Architect, Security & Privacy Reviewer | Product Designer (layout review with the user), Data Engineer, Infrastructure Engineer, SRE, AppSec, API Designer, Accessibility, ML Engineer, FinOps |
+| Design | UX Designer, Software Architect, Security & Privacy Reviewer | Product Designer (layout review with the user), Data Engineer, Infrastructure Engineer, SRE, AppSec, Offensive Security (threat model, attack surface), API Designer, Accessibility, ML Engineer, FinOps |
 | Build | Senior Engineer | Data Engineer (migrations), DevOps (pipelines), Infrastructure (IaC), Frontend/Mobile, QA Automation |
-| Verify | QA Engineer, Security & Privacy Reviewer, Independent Reviewer | Exploratory Tester, Beta Tester (zero-context walkthrough), Performance Engineer, AppSec, AI Safety Reviewer |
-| Launch | Release Engineer/SRE, Product Marketing/DevRel, Support | DevOps, Technical Writer, Compliance Officer (evidence) |
+| Verify | QA Engineer, Security & Privacy Reviewer, Independent Reviewer | Exploratory Tester, Beta Tester (zero-context walkthrough), Performance Engineer, AppSec, Offensive Security (live probe), AI Safety Reviewer |
+| Launch | Release Engineer/SRE, Product Marketing/DevRel, Support | DevOps, Technical Writer, Compliance Officer (evidence), Offensive Security (findings register, pentest scope) |
 | Evolve | Growth PM, Platform Engineer, SRE | Analytics Engineer, FinOps, QA Automation (regression tests) |
 | Sunset | Portfolio PM, Support, Compliance | Data Engineer (archive and drop), Infrastructure (teardown), Privacy Engineer (deletion) |

@@ -39,6 +39,7 @@ The `description:` frontmatter field controls when the model offers the skill. W
 | `references/templates.md` | Artifact templates (spec.md, design.md, launch.md, etc.) | A template is missing a field or has a wrong default |
 | `references/reviewers/*.md` | Adversarial reviewer prompts, one per stage | A reviewer misses something or asks the wrong questions |
 | `references/specialists/*.md` | Domain specialist lenses + Reviewer Injection blocks | A domain-specific red flag is missed; a new domain is needed |
+| `references/security-tools.md` | Shared tool allowlist (install rules per tier) + read-only vulnerability data feeds, cited by the security specialist and its delegates | A tool is added or removed; an install or triage rule changes |
 
 ## Making a change
 
