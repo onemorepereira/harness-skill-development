@@ -41,7 +41,7 @@ Scan the request, the code you'll touch, and the spec (once written). Load only 
 | If the change touches… | Load | Specialists inside |
 |---|---|---|
 | Schemas, migrations, data stores, pipelines, backfills, analytics events, metrics | `references/specialists/data.md` | Data Engineer/DBA, Analytics Engineer |
-| Auth, permissions, user input, secrets, uploads, new dependencies, personal data | `references/specialists/security.md` | Application Security Engineer, Privacy Engineer |
+| Auth, permissions, user input, secrets, uploads, new dependencies, personal data; attack-surface changes (new endpoints, public exposure, tenant boundaries) | `references/specialists/security.md` | Application Security Engineer, Privacy Engineer, Offensive Security Engineer |
 | Infrastructure, deploy pipelines, CI/CD, config, scaling, reliability, cloud cost | `references/specialists/platform.md` | Infrastructure Engineer, DevOps/Platform Engineer, SRE, FinOps |
 | Any Standard or Full track; performance budgets; onboarding or developer tools | `references/specialists/quality.md` | QA Automation Engineer, Exploratory Tester, Performance Engineer, Beta Tester |
 | Regulated data or frameworks (SOC 2, HIPAA, PCI, GDPR…), audit logs, retention | `references/specialists/compliance.md` | Compliance Officer |
@@ -99,9 +99,10 @@ On Standard and Full, hand these to a subagent using the prompt file, and keep o
 | Evidence sweep | Discover | `references/delegates/evidence-sweep.md` |
 | Source lookup | Claims need grounding — batch them per stage | `references/delegates/source-lookup.md` |
 | Security scan | Security specialist active; Build and Verify | `references/delegates/security-scan.md` |
+| Pentest probe | Offensive Security Engineer active; Verify | `references/delegates/pentest-probe.md` |
 | Verify run | Verify | `references/delegates/verify-run.md` |
 
-Budget: one evidence sweep per request; one source-lookup batch per stage (check later stragglers inline); one verify run and one security scan per Verify pass. Delegates gather and run; they don't decide. Gate verdicts and claims of done stay with you, based on the evidence they return.
+Budget: one evidence sweep per request; one source-lookup batch per stage (check later stragglers inline); one verify run, one security scan, and one pentest probe per Verify pass. Delegates gather and run; they don't decide. Gate verdicts and claims of done stay with you, based on the evidence they return.
 
 ---
 
@@ -116,6 +117,8 @@ Stop and ask the human at these points only:
 | After Design gate (Full track) | Same; plus any irreversible architectural decision |
 | A gate still has blockers after 3 subagent passes | The blockers, the reviewer's reasoning, and your proposed resolution for each |
 | Product Designer runs a design review (UI work, any track but Patch), or a gate finding would change a design the user approved, supplied, or steered | Directions to choose from, then the refined design to approve; for a conflicting finding, the finding and your proposed resolution |
+| Before probing a target ship-it didn't start itself, or any active heavy-tier use (Offensive Security Engineer) | The one-line scope note — target, tests, destructive tests excluded — for the user's OK |
+| Accepting a Critical or High security finding under extenuating circumstances | The finding, its evidence, the circumstances, and compensating controls; only the user can accept it |
 | Before any irreversible action (any track) | Explicit confirmation regardless of track |
 | After execution | Final summary: what shipped, rulings made, deferred minors |
 
