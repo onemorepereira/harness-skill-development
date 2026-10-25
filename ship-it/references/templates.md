@@ -10,6 +10,7 @@ Short is better. Delete sections that don't apply instead of writing "N/A". Thes
 - deprecation.md (Sunset) — legacy format
 - evolution-brief.md (Evolve)
 - dependent-inventory.md (Sunset)
+- docs/security/ evidence files (Offensive Security Engineer active)
 - Handoff report (end of every track)
 
 ---
@@ -243,6 +244,76 @@ Evidence: where this comes from — a specific metric, an incident, a pattern in
 
 ---
 
+## docs/security/ evidence files
+
+Starter templates for the living security evidence folder, created and kept current by the Offensive Security Engineer (`references/specialists/security.md`). Each run updates only the files its change affects. Field names here match that specialist's evidence contract exactly.
+
+### docs/security/README.md
+
+```markdown
+# Security evidence
+
+What an auditor or pentester should read, and in what order. Inventory started <date>; covers entry points touched by ship-it runs since then — not a full-repo baseline.
+
+| File | What it holds | Last updated |
+|---|---|---|
+| threat-model.md | Threats per component and their mitigations | <date> |
+| attack-surface.md | Inventory of entry points and their exposure | <date> |
+| findings.md | Every finding, its status, and accepted-risk decisions | <date> |
+| test-log.md | Dated record of every security test run | <date> |
+```
+
+### docs/security/threat-model.md
+
+```markdown
+# Threat model
+
+## <Component or entry point>
+- **Threats (STRIDE):** <spoofing / tampering / repudiation / info disclosure / DoS / elevation — the ones that apply>
+- **Mitigation:** <how each is addressed>
+- **Covered by:** <link to the test or test-log.md entry that proves it>
+```
+
+### docs/security/attack-surface.md
+
+```markdown
+# Attack surface
+
+| Entry point | Exposure (public/internal) | Auth required | Added | Removed | Next pentest scope |
+|---|---|---|---|---|---|
+| <method + path, port, bucket, webhook…> | public | yes | <date> | — | yes |
+```
+
+### docs/security/findings.md
+
+```markdown
+# Findings register
+
+Severity: Critical / High / Medium / Low / Info. Unfixed findings are redacted (class + component + observed outcome, no reproduction). Reproduction steps are added to test-log.md only after status is `fixed`.
+
+| ID | Source | Severity | Component | Class | Status | Found | Accepted: reason / owner / review-by | Fixed: commit / re-test date |
+|---|---|---|---|---|---|---|---|---|
+| F-001 | ship-it probe | High | <component> | IDOR | open | <date> | — | — |
+```
+
+### docs/security/test-log.md
+
+```markdown
+# Security test log
+
+Append-only; newest at the bottom.
+
+## <date> — <change / feature slug>
+- **Scope note:** <target, tests run, destructive tests excluded — or "self-started, none needed">
+- **Target:** <url or command>
+- **Tools:** <tool + version installed / removed>
+- **Tests run:** <WSTG IDs and plain description>
+- **Results:** <per test: pass / finding (F-00N) / not probed — reason>
+- **CVE triage:** <if any finding carried a CVE: KEV + EPSS lookup results, or "not checked — reason">
+```
+
+---
+
 ## Handoff report
 
 ```markdown
@@ -255,6 +326,10 @@ Evidence: where this comes from — a specific metric, an incident, a pattern in
 **Exercised live:** <what was run end to end, where, and what happened — or why no real environment was reachable>
 
 **Security scans:** <per category: tool + version, command, result — or "unscanned (no tool available)"; omit if the security specialist was not active>
+
+**Pentest probe:** <if the Offensive Security Engineer was active: findings by severity (redacted for anything not fixed), each fixed / accepted / open; categories listed "not probed" with reason; or omit>
+
+**docs/security/ updated:** <the evidence files this change touched — or omit if the Offensive Security Engineer was not active>
 
 **Gate history:** <per gate: review type, number of passes, blockers found and how each was resolved>
 
