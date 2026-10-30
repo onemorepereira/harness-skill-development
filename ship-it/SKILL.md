@@ -94,13 +94,15 @@ Discover has no gate review; Patch has none at all. **Self** review: answer the 
 
 On Standard and Full, hand these to a subagent using the prompt file, and keep only what it returns; with no subagent tool, follow the prompt file yourself. On Patch and Quick, do the work inline without opening the prompt files: check the versions you rely on, run the available scanners, run the full suite, and run the change once the way it will actually run.
 
-| Work | When | Prompt |
-|---|---|---|
-| Evidence sweep | Discover | `references/delegates/evidence-sweep.md` |
-| Source lookup | Claims need grounding — batch them per stage | `references/delegates/source-lookup.md` |
-| Security scan | Security specialist active; Build and Verify | `references/delegates/security-scan.md` |
-| Pentest probe | Offensive Security Engineer active; Verify | `references/delegates/pentest-probe.md` |
-| Verify run | Verify | `references/delegates/verify-run.md` |
+| Work | When | Prompt | Tier |
+|---|---|---|---|
+| Evidence sweep | Discover | `references/delegates/evidence-sweep.md` | lighter |
+| Source lookup | Claims need grounding — batch them per stage | `references/delegates/source-lookup.md` | lighter |
+| Security scan | Security specialist active; Build and Verify | `references/delegates/security-scan.md` | same |
+| Pentest probe | Offensive Security Engineer active; Verify | `references/delegates/pentest-probe.md` | same |
+| Verify run | Verify | `references/delegates/verify-run.md` | lighter |
+
+**Tier:** where the harness lets you set model or effort per dispatch, send *lighter* delegates one step down (lower effort, or a smaller model); they gather and report against a fixed return shape, so judgment isn't what they're paying for. *Same* runs at your own level — the scan triages false positives and the probe attacks, and a wrong call there costs more than the tokens. With no such control, ignore the column. Gate reviewer tiers are in `references/reviewers/README.md`.
 
 Budget: one evidence sweep per request; one source-lookup batch per stage (check later stragglers inline); one verify run, one security scan, and one pentest probe per Verify pass. Delegates gather and run; they don't decide. Gate verdicts and claims of done stay with you, based on the evidence they return.
 
