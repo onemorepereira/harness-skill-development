@@ -1,6 +1,6 @@
 # harness-skill-development
 
-Agent skills for OpenCode and Claude Code, developed and maintained by [@mpereira](https://github.com/mpereira). The primary skill is **ship-it** — a full product lifecycle framework with adversarial validation at every stage gate.
+Agent skills for OpenCode and Claude Code, developed and maintained by [@onemorepereira](https://github.com/onemorepereira). The primary skill is **ship-it** — a full product lifecycle framework with adversarial validation at every stage gate.
 
 > **Status:** active single-maintainer project. Contributions welcome; response time is best-effort.
 
